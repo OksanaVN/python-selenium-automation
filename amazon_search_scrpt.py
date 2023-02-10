@@ -16,7 +16,7 @@ sleep(5)
 driver.find_element(By.ID, 'twotabsearchtextbox').send_keys('table')
 driver.find_element(By.ID, 'nav-search-submit-button').click()
 
-expected_result = '"table00000000"'
+expected_result = '"table"'
 actual_result = driver.find_element(By.XPATH, "//span[@class='a-color-state a-text-bold']").text
 print(actual_result)
 
