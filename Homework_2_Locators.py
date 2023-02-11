@@ -53,6 +53,12 @@ driver.find_element(By.XPATH, "//a[@class='a-button-text']")
 # *Conditions of use link
 driver.find_element(By.XPATH, "//a[@class='a-link-normal' and @href='/gp/help/customer/display.html/ref=ap_desktop_footer_cou?ie=UTF8&nodeId=508088']")
 
+#Lana's version
+driver.find_element(By.XPATH, "//a[contains(@href, 'ap_signin_notification_condition_of_use')]")
+driver.find_element(By.XPATH, "//div[@id='legalTextRow']//a[text()='Conditions of Use']")
+
+
 # *Privacy Notice link
 
 driver.find_element(By.XPATH, "//a[@class='a-link-normal' and @href='/gp/help/customer/display.html/ref=ap_desktop_footer_privacy_notice?ie=UTF8&nodeId=468496']")
+
