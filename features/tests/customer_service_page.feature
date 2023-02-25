@@ -10,3 +10,8 @@ Feature: Verify Customer Service Page UI elements
     Then Verify Customer Service Header contains Home Link
     Then Verify Customer Service Header contains Digital Services and Device Support link
     Then Verify Welcome to Amazon Customer Service Header
+    Then Verify What would you like help with today message displayed
+    #Sometimes there are 9 cards, sometimes 10
+    Then Verify Welcome to Amazon section contain 10 cards
+    Then Verify Search our help library header
+    Then Verify Library search input field
