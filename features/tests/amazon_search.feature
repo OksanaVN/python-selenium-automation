@@ -2,15 +2,20 @@
 Feature: Amazon Search
 
 
-  Scenario: User can search for a product on Amazon
+  Scenario Outline: User can search for a coffee on Amazon
     Given Open Amazon page
-    When Input text coffee
+    When Input text <search_word>
     When Click on search button
-    Then Verify that text "coffee" is shown
+    Then Verify that text <search_result> is shown
+    Examples:
+    |search_word |search_result |
+    |coffee      |"coffee"      |
+    |table       |"table"       |
+    |mug         |"mug"         |
 
 
-  Scenario: User can search for a product on Amazon
-    Given Open Amazon page
-    When Input text shampoo
-    When Click on search button
-    Then Verify that text "shampoo" is shown
+#  Scenario: User can search for a shampoo on Amazon
+#    Given Open Amazon page
+#    When Input text shampoo
+#    When Click on search button
+#    Then Verify that text "shampoo" is shown
