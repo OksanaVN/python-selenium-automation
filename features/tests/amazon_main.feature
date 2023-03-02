@@ -14,6 +14,11 @@ Feature: Amazon main page tests
     Then Verify that header has 29 links
 
 
+  Scenario: Sign in page can be opened from Sign In popup
+    Given Open Amazon page
+    When Click Sign In from popup
+    Then Verify sign page opens
+
 
 
 

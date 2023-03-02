@@ -1,11 +1,5 @@
 
-Feature: Verify Sign In page
-
-
-  Scenario: Logged out user sees sign in page when clicking on Returns and Orders
-    Given Open Amazon page
-    When Click on Returns&Orders
-    Then Verify Sign in Page by finding Email input field
+Feature: Amazon cart tests
 
 
   Scenario: Verify Cart is empty
@@ -14,7 +8,7 @@ Feature: Verify Sign In page
     Then I should see "Your Amazon Cart is empty"
 
 
-  Scenario: Verify product in the cart
+   Scenario: Verify product in the cart
     Given Open Amazon page
     When Input text mug
     When Click on search button
@@ -23,6 +17,7 @@ Feature: Verify Sign In page
     And Close Slide Window
     And Click on Cart
     Then I should see "Ember Temperature Control Smart Mug 2"
+
 
 
 

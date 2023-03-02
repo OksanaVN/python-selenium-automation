@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
+from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
 
@@ -10,6 +11,7 @@ FOOTER_LINKS = (By.CSS_SELECTOR, "table.navFooterMoreOnAmazon td.navFooterDescIt
 HEADER_LINKS = (By.CSS_SELECTOR, "#nav-xshop .nav-a[data-csa-c-type='link']")
 BEST_SELLERS = (By.CSS_SELECTOR, "a[href*='nav_cs_bestsellers']")
 CUSTOMER_SERVICE = (By.CSS_SELECTOR, "#nav-xshop a[href*='nav_cs_customerservice']")
+SIGN_IN_BTN = (By.CSS_SELECTOR, '#nav-signin-tooltip a.nav-action-button')
 
 
 @given('Open Amazon page')
@@ -35,19 +37,21 @@ def click_returns_orders(context):
 @when('Click on Cart')
 def click_on_cart(context):
     context.driver.find_element(By.ID, 'nav-cart-count').click()
-    sleep(3)
 
 
 @when('Click on Best Sellers')
 def click_on_best_sellers(context):
     context.driver.find_element(*BEST_SELLERS).click()
-    sleep(3)
 
 
 @when('Click on Customer Service')
 def click_on_customer_service(context):
     context.driver.find_element(*CUSTOMER_SERVICE).click()
-    sleep(3)
+
+
+@when('Click Sign In from popup')
+def click_signin(context):
+    context.driver.wait.until(EC.element_to_be_clickable(SIGN_IN_BTN)).click()
 
 
 @then('Verify hamburger menu item')
