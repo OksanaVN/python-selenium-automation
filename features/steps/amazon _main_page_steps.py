@@ -53,10 +53,27 @@ def click_on_customer_service(context):
 def click_signin(context):
     context.driver.wait.until(EC.element_to_be_clickable(SIGN_IN_BTN)).click()
 
+    context.driver.wait.until(
+        EC.element_to_be_clickable(SIGN_IN_BTN),
+        message='Sign in btn not clickable'
+    ).click()
+
+
+@when('Wait for {sec} seconds')
+def wait_for_sec(context, sec):
+    sleep(int(sec))
+
 
 @then('Verify hamburger menu item')
 def verify_ham_menu_present(context):
-    context.driver.find_element(*HAM_MENU)
+    context.ham_menu = context.driver.find_element(*HAM_MENU)
+    context.driver.refresh()
+
+
+@when('Click on ham menu')
+def click_ham_menu(context):
+    context.ham_menu = context.driver.find_element(*HAM_MENU)
+    context.ham_menu.click()
 
 
 @then('Verify that footer has {expected_amount} links')
@@ -72,3 +89,18 @@ def verify_header_link_count(context, expected_amount):
     header_links = context.driver.find_elements(*HEADER_LINKS)
     assert len(header_links) == expected_amount, f'Expected {expected_amount} links, but got {len(header_links)}'
 
+
+@then('Verify sign in pop up shown')
+def verify_sign_in_popup_visible(context):
+    context.driver.wait.until(
+        EC.element_to_be_clickable(SIGN_IN_BTN),
+        message='Sign in button not clickable'
+    )
+
+
+@then('Verify sign in pop up disappears')
+def verify_sign_in_popup_not_visible(context):
+    context.driver.wait.until(
+        EC.invisibility_of_element_located(SIGN_IN_BTN),
+        message='Sign in button did not disappear'
+    )

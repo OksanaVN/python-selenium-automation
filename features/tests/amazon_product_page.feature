@@ -17,3 +17,12 @@ Feature: Tests for product page
     And Click on search button
     Then Verify every product has an image
     And Verify every product has a name
+
+
+#Lana's example of HM 5, number 3
+  Scenario: Verify that user can see product names and images
+    Given Open Amazon page
+    When Input text coffee
+    And Click on search button
+    Then Verify that every product has a name and an image
+

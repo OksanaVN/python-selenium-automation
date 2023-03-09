@@ -52,27 +52,6 @@ def verify_user_can_click_jeans_color(context):
 
     assert expected_colors == actual_colors, f'Expected {expected_colors}, but got {actual_colors}'
 
-# I am not sure if that's correct way to do it, also  am lost and don't know how to write assertion error message
-@then('Verify every product has an image')
-def verify_every_image_on_search_page(context):
-    products = context.driver.find_elements(By.CSS_SELECTOR, "div.s-main-slot.s-result-list div.s-card-container")
-    print(len(products))
-
-    for images in products:
-        images = context.driver.find_elements(By.CSS_SELECTOR, "div.s-main-slot.s-result-list img.s-image")
-        print(len(images))
-
-    assert len(images) >= len(products) # step didn't fail
-
-
-@then('Verify every product has a name')
-def verif_every_product_has_name(context):
-    products = context.driver.find_elements(By.CSS_SELECTOR, "div.s-main-slot.s-result-list div.s-card-container")
-
-    for names in products:
-        names = context.driver.find_elements(By.CSS_SELECTOR, "div.s-main-slot.s-result-list div.a-section.a-spacing-small h2.a-size-mini.a-spacing-none")
-
-    assert len(names) <= len(products)
 
 
 
