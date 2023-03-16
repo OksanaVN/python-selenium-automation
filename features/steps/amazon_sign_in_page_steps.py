@@ -6,7 +6,8 @@ from time import sleep
 
 @then('Verify Sign in Page by finding Email input field')
 def verify_email_input_field(context):
-    assert context.driver.find_element(By.ID, 'ap_email').is_displayed(), 'Email field not shown'
+    #assert context.driver.find_element(By.ID, 'ap_email').is_displayed(), 'Email field not shown'
+    context.app.sign_in_page.verify_email_field()
 
 
 @then('Verify sign in page opens')

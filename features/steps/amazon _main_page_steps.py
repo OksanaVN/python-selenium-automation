@@ -16,27 +16,32 @@ SIGN_IN_BTN = (By.CSS_SELECTOR, '#nav-signin-tooltip a.nav-action-button')
 
 @given('Open Amazon page')
 def open_amazon(context):
-    context.driver.get('https://www.amazon.com/')
+    #context.driver.get('https://www.amazon.com/')
+    context.app.main_page.open_main()
 
 
-@when('Input text {search_word}')
-def input_search_word(context, search_word):
-    context.driver.find_element(*AMAZON_SEARCH_FIELD).send_keys(search_word)
+@when('Input text {text}')
+def input_search_word(context, text):
+    #context.driver.find_element(*AMAZON_SEARCH_FIELD).send_keys(search_word)
+    context.app.header.input_search_text(text)
 
 
 @when('Click on search button')
 def click_search(context):
-    context.driver.find_element(*SEARCH_BUTTON).click()
+    #context.driver.find_element(*SEARCH_BUTTON).click()
+    context.app.header.click_search()
 
 
 @when('Click on Returns&Orders')
 def click_returns_orders(context):
-    context.driver.find_element(By.ID, 'nav-orders').click()
+    #context.driver.find_element(By.ID, 'nav-orders').click()
+    context.app.main_page.click_return_orders()
 
 
 @when('Click on Cart')
 def click_on_cart(context):
-    context.driver.find_element(By.ID, 'nav-cart-count').click()
+    #context.driver.find_element(By.ID, 'nav-cart-count').click()
+    context.app.main_page.click_cart()
 
 
 @when('Click on Best Sellers')

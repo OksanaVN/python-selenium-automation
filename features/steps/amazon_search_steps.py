@@ -11,13 +11,15 @@ PRODUCT_TITLE = (By.CSS_SELECTOR, 'h2 span.a-text-normal')
 
 @when('Select "Ember Temperature Control Smart Mug"')
 def select_ember_mug(context):
-    context.driver.find_element(By.CSS_SELECTOR, "img[src='https://m.media-amazon.com/images/I/61VXH79P8sL._AC_UL320_.jpg']").click()
+    #context.driver.find_element(By.CSS_SELECTOR, "img[src='https://m.media-amazon.com/images/I/51JTZ5qwHvL._AC_UL320_.jpg']").click()
+    context.app.search_results_page.select_ember_black_mug()
 
 
 @then('Verify that text {expected_result} is shown')
 def verify_search_results(context, expected_result):
-    actual_result = context.driver.find_element(By.XPATH, "//span[@class='a-color-state a-text-bold']").text
-    assert expected_result == actual_result, f'Expected {expected_result} but got actual {actual_result}'
+    # actual_result = context.driver.find_element(By.XPATH, "//span[@class='a-color-state a-text-bold']").text
+    # assert expected_result == actual_result, f'Expected {expected_result} but got actual {actual_result}'
+    context.app.search_results_page.verify_search_result(expected_result)
 
 
 # I am not sure if that's correct way to do it, also  am lost and don't know how to write assertion error message

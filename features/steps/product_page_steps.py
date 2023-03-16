@@ -13,12 +13,14 @@ def open_product(context, product_id):
 
 @when('Click on Add to Cart')
 def click_add_to_cart(context):
-    context.driver.find_element(By.ID, 'add-to-cart-button').click()
+    #context.driver.find_element(By.ID, 'add-to-cart-button').click()
+    context.app.product_page.click_add_to_cart()
 
 
 @when('Close Slide Window')
 def close_slide_window(context):
-    context.driver.find_element(By.ID, 'attach-close_sideSheet-link').click()
+    #context.driver.find_element(By.ID, 'attach-close_sideSheet-link').click()
+    context.app.product_page.close_sliding_window()
 
 
 @then('Verify user can click through colors')
