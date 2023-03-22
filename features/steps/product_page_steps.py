@@ -7,9 +7,11 @@ from time import sleep
 COLOR_OPTIONS = (By.CSS_SELECTOR, "#variation_color_name li")
 CURRENT_COLOR = (By.CSS_SELECTOR, "#variation_color_name .selection")
 
+
 @given('Open Amazon product {product_id} page')
 def open_product(context, product_id):
     context.driver.get(f'https://www.amazon.com/dp/{product_id}/')
+
 
 @when('Click on Add to Cart')
 def click_add_to_cart(context):
@@ -21,6 +23,11 @@ def click_add_to_cart(context):
 def close_slide_window(context):
     #context.driver.find_element(By.ID, 'attach-close_sideSheet-link').click()
     context.app.product_page.close_sliding_window()
+
+
+@when('Hover over New Arrivals')
+def hover_over_new_arrival(context):
+    context.app.product_page.hover_over_new_arrival()
 
 
 @then('Verify user can click through colors')
@@ -53,6 +60,12 @@ def verify_user_can_click_jeans_color(context):
         actual_colors += [current_color]
 
     assert expected_colors == actual_colors, f'Expected {expected_colors}, but got {actual_colors}'
+
+
+@then('Verify user sees Women link')
+def verify_women_link(context):
+    context.app.product_page.verify_women_link()
+
 
 
 

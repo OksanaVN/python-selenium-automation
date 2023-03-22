@@ -4,8 +4,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
 
-AMAZON_SEARCH_FIELD = (By.ID, 'twotabsearchtextbox')
-SEARCH_BUTTON = (By.ID, 'nav-search-submit-button')
 HAM_MENU = (By.ID, 'nav-hamburger-menu')
 FOOTER_LINKS = (By.CSS_SELECTOR, "table.navFooterMoreOnAmazon td.navFooterDescItem")
 HEADER_LINKS = (By.CSS_SELECTOR, "#nav-xshop .nav-a[data-csa-c-type='link']")
@@ -69,6 +67,11 @@ def wait_for_sec(context, sec):
     sleep(int(sec))
 
 
+@when('Hover over language options')
+def hover_language_options(context):
+    context.app.header.hover_language_options()
+
+
 @then('Verify hamburger menu item')
 def verify_ham_menu_present(context):
     context.ham_menu = context.driver.find_element(*HAM_MENU)
@@ -79,6 +82,11 @@ def verify_ham_menu_present(context):
 def click_ham_menu(context):
     context.ham_menu = context.driver.find_element(*HAM_MENU)
     context.ham_menu.click()
+
+
+@when('Select department by alias {alias}')
+def select_department(context, alias):
+    context.app.header.select_department(alias)
 
 
 @then('Verify that footer has {expected_amount} links')
@@ -109,3 +117,8 @@ def verify_sign_in_popup_not_visible(context):
         EC.invisibility_of_element_located(SIGN_IN_BTN),
         message='Sign in button did not disappear'
     )
+
+
+@then('Verify Spanish option presents')
+def verify_lang_shown(context):
+    context.app.header.verify_lang_shown()

@@ -27,3 +27,21 @@ Feature: Amazon Search
     When Input Dress into search field
     And Click on search icon
     Then Product results for Dress are shown
+
+
+  Scenario: User can select and search in a department
+    Given Open Amazon page
+    When Select department by alias audible
+    When Input text Faust
+    When Click on search button
+    Then Verify audible department is selected
+
+
+  Scenario: User can select and search for computers in a department
+    Given Open Amazon page
+    When Select department by alias computers
+    When Input text gaming computer
+    When Click on search button
+    Then Verify pc department is selected
+
+

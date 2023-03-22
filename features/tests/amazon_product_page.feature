@@ -26,3 +26,8 @@ Feature: Tests for product page
     And Click on search button
     Then Verify that every product has a name and an image
 
+
+  Scenario: Open a closing product and hover over New Arrivals
+    Given Open Amazon product B074TBCSC8 page
+    When Hover over New Arrivals
+    Then Verify user sees Women link

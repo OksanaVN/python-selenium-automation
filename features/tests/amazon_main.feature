@@ -28,4 +28,8 @@ Feature: Amazon main page tests
     Then Verify sign in pop up disappears
 
 
+  Scenario: User can see language options
+    Given Open Amazon page
+    When Hover over language options
+    Then Verify Spanish option presents
 
